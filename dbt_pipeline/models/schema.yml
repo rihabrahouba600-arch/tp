@@ -1,0 +1,17 @@
+version: 2
+
+models:
+  - name: ventes_clean
+    columns:
+      - name: produit
+        tests:
+          - not_null
+      - name: quantite
+        tests:
+          - not_null
+
+  - name: ventes_resume
+    columns:
+      - name: categorie
+        tests:
+          - not_null
