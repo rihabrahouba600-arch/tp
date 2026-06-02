@@ -12,6 +12,8 @@ finaux.
 • Orchestration et traçabilité : Au lieu de lancer manuellement des scripts dans un 
 ordre incertain, Dagster gère centralement les dépendances, offre un suivi visuel des 
 pannes et conserve des logs détaillés de chaque exécution. 
+
+
 Question 2 : Quel est l'intérêt d'utiliser DuckDB pour le stockage local et dlt pour 
 l'ingestion ? 
 • DuckDB : C'est une base de données analytique (orientée colonne) optimisée pour les 
@@ -23,6 +25,8 @@ serveur Cloud (Snowflake, BigQuery).
 des sources variées (APIs, fichiers, bases de données). Il gère automatiquement 
 l'inférence et l'évolution des schémas (si une colonne s'ajoute ou change de type) et 
 structure proprement les données dans DuckDB sans effort de code. 
+
+
 Question 3 : Quel est le rôle de dbt dans ce projet ? Expliquez l'organisation en couches et 
 l'importance de la macro {{ ref(...) }}. 
 • Le rôle de dbt : dbt (data build tool) s'occupe exclusivement de la partie 
@@ -42,6 +46,8 @@ BI (ventes_resume).
 2. Construire automatiquement le graphe de lignage (Lineage Graph) afin de 
 savoir exactement dans quel ordre exécuter les modèles SQL selon leurs 
 dépendances. 
+
+
 Question 4 : Comment Dagster orchestre-t-il l'ensemble ? Quelles sont les limites de 
 l'utilisation de os.system() pour exécuter dbt ? 
 • L'orchestration par Dagster : Dagster organise le pipeline sous forme de "Software
@@ -56,6 +62,8 @@ commande globale a réussi ou échoué, mais il ne peut pas analyser finement
 quelle table spécifique de dbt a posé problème. 
 o Elle empêche le partage natif des métadonnées, des logs détaillés et des 
 artefacts entre les différentes boîtes du pipeline. 
+
+
 Question 5 : Quel est le rôle de la CI (GitHub Actions) configurée à l'étape 6 ? Décrivez un 
 scénario où elle échouerait. 
 • Le rôle de la CI (Intégration Continue) : Le workflow GitHub Actions agit comme un 
